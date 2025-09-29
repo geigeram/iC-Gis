@@ -2,6 +2,7 @@ import streamlit as st
 import leafmap.foliumap as leafmap
 import pandas as pd
 
+st.title("Bohrlöcher")
 df = pd.read_csv('data/230710_GeoDatenbank_Lage.csv', sep=';')
 df['lat'] = df['lat'].str.replace(',', '.').astype(float)
 df['lon'] = df['lon'].str.replace(',', '.').astype(float)
@@ -19,10 +20,9 @@ st.set_page_config(layout="wide")
 
 
 st.sidebar.title("About")
+
 logo = r'C:\Users\a.geiger\Documents\GitHub\streamlit_gis\gis.png'
 st.sidebar.image(logo)
-
-st.title("Bohrlöcher")
 
 m = leafmap.Map(center=[54, 15], zoom=4)
 #cities = pd.read_csv('data/230710_GeoDatenbank_Lage.csv', sep=';')
@@ -40,3 +40,4 @@ m.add_points_from_xy(filtered_df, x="lon", y="lat")
            # add_legend=True,)
 
 m.to_streamlit(height=700)
+
