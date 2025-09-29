@@ -1,0 +1,16 @@
+﻿Projektnummer;Projektname;Standort;lat;lon;EPSG;Bohrung;SPT;Schurf;DPH;CPT;GPH;DLP;Feldversuch;Versickerung;Wasseranalyse;Kennwerte;Labor;Lockergestein;Festgestein
+12x210265;Umbau LDZ;Salzburg;47,81443;13,04326;;Ja;Ja;Nein;Nein;Ja;Nein;Nein;Nein;Nein;Nein;;Nein;Ja;Ja
+12x200207;ÖBB Brücke;Eschenau;47,30605;13,01454;;Ja;Nein;Nein;Ja;Nein;Nein;Nein;Nein;Nein;Nein;;Ja;Ja;Ja
+12x220113;LPD Kärnten;Klagenfurt;46,62018;14,30773;;Ja;Ja;Ja;Ja;Nein;Nein;Nein;Nein;Ja;Nein;;Ja;Ja;Nein
+12x210435;WP Dürnkrut III;Dürnkrut;48,48823;16,82200;;Ja;Ja;Ja;Nein;Ja;Nein;Ja;Ja;Nein;Nein;;Ja;Ja;Nein
+12x220135;Hotel Salzamt;Hallstatt;47,55240;13,65024;;Ja;Ja;Ja;Nein;Nein;Nein;Nein;Nein;Nein;Ja;;Ja;Ja;Nein
+12x180175;ÖBB Schwarzach Geo;Schwarzach;47,31540;13,14336;;Nein;Nein;Ja;;Nein;Nein;Ja;Nein;Nein;Nein;;Ja;Ja;Nein
+12x210329;Gleissanierung Mining;Hagenau;48,26252;13,10580;;Ja;Nein;Ja;Nein;Nein;Nein;Ja;Nein;Nein;Nein;;Nein;Ja;Ja
+12x170371;Verdachtsfläche Postareal;Salzburg;47,81630;13,04607;;Ja;Nein;Nein;Nein;Nein;Nein;Nein;Nein;Nein;Ja;;Ja;Ja;Nein
+12x13285;BV Sanierung Schießplatz;Glanegg;47,74782;13,01762;;Ja;Nein;Ja;Nein;Nein;Nein;Nein;Ja;Ja;Ja;;Ja;Ja;Ja
+12x220149;Residenz;Salzburg;47,79827;13,04509;;Ja;Nein;Ja;Nein;Nein;Nein;Nein;Nein;Nein;Ja;;Nein;Ja;Nein
+12x230032;S10 Mühlviertler Schnellstraße;Freistadt;48,43531;14,48254;;Ja;Ja;Ja;Nein;Nein;Nein;Nein;Ja;Nein;Ja;;Ja;Ja;Ja
+12x220341;Gips -und Anhydrit Bergbau Wienern/Grundlsee;Auermahd;47,62084;13,86940;;Ja;Nein;;Nein;Nein;Nein;Nein;Nein;Nein;Ja;;Nein;Ja;Ja
+12x170417;Ziegel Brenner;Dachberg;46,75963;14,85274;;Ja;Nein;Nein;Nein;Nein;Nein;Nein;Nein;Nein;Nein;;Ja;Ja;Ja
+12x190443;STA Perneck Rettungs- und Wetterstollen;Perneck;47,67842;13,65197;;Ja;Nein;Ja;Nein;Nein;Nein;Nein;Nein;Ja;Ja;;Nein;Ja;Ja
+12x15220;Speicher Donneregg;Werfenweng;47,45349;13,26019;;Ja;Nein;Ja;Nein;Nein;Nein;Ja;Nein;Nein;Ja;;Ja;Ja;Ja
