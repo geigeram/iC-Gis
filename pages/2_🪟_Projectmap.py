@@ -15,7 +15,7 @@ if selected_projekt == "All":
     filtered_df = df
     filtered_df = filtered_df.dropna(subset=["Breite", "Laenge"])
 else:
-    filtered_df = df[df['Projektname'] == selected_projekt]
+    filtered_df = df[df['Team'] == selected_projekt]
     filtered_df = filtered_df.dropna(subset=["Breite", "Laenge"])
 
 
@@ -33,7 +33,7 @@ m = leafmap.Map(center=[54, 15], zoom=4)
         #regions = "https://raw.githubusercontent.com/giswqs/leafmap/master/examples/data/us_regions.geojson"
 
         #m.add_geojson(regions, layer_name="US Regions")
-m.add_points_from_xy(filtered_df, x="Breite", y="Laenge")
+m.add_points_from_xy(filtered_df, x="Laenge", y="Breite")
         #m.add_points_from_xy(
            # cities,
            # x="lat",

@@ -5,6 +5,7 @@ import pandas as pd
 
 st.title("Project Dataframe")
 df = pd.read_csv('data\Alle Projekte 15_04_2025 14-34-31.csv', sep=';')
+st.write(df.columns.tolist())
 df['Breite'] = df['Breite'].str.replace(',', '.').astype(float)
 df['Laenge'] = df['Laenge'].str.replace(',', '.').astype(float)
 
@@ -16,7 +17,7 @@ if selected_projekt == "All":
     filtered_df = df
     filtered_df = filtered_df.dropna(subset=["Breite", "Laenge"])
 else:
-    filtered_df = df[df['Projektname'] == selected_projekt]
+    filtered_df = df[df['Team'] == selected_projekt]
     filtered_df = filtered_df.dropna(subset=["Breite", "Laenge"])
 
 
