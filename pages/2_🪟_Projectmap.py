@@ -1,46 +1,42 @@
 import streamlit as st
-import leafmap.foliumap as leafmap
 import pandas as pd
-
-st.title("Project Map")
-df = pd.read_csv('data\Alle Projekte 15_04_2025 14-34-31.csv', sep=';')
-df['Breite'] = df['Breite'].str.replace(',', '.').astype(float)
-df['Laenge'] = df['Laenge'].str.replace(',', '.').astype(float)
-
-projekt_options = ["All"] + list(df['Team'].unique())
-selected_projekt = st.selectbox("Select Projektname", projekt_options)
-
-
-if selected_projekt == "All":
-    filtered_df = df
-    filtered_df = filtered_df.dropna(subset=["Breite", "Laenge"])
-else:
-    filtered_df = df[df['Team'] == selected_projekt]
-    filtered_df = filtered_df.dropna(subset=["Breite", "Laenge"])
-
-
+import pydeck as pdk
+from streamlit_keplergl import keplergl_static
+from keplergl import KeplerGl
 
 st.set_page_config(layout="wide")
+st.title("Project Map")
 
+# Read the geocoded Excel file
+try:
+    df = pd.read_excel('data/geocoded_results.xlsx')
+except FileNotFoundError:
+    st.error("Geocoded results file not found. Please run the geocoding in the Project Dataframe page first.")
+    st.stop()
 
-st.sidebar.title("About")
+# Handle coordinate columns
+lat_col = 'latitude' if 'latitude' in df.columns else 'lat'
+lon_col = 'longitude' if 'longitude' in df.columns else 'lon'
 
-logo = r'C:\Users\a.geiger\Documents\GitHub\streamlit_gis\gis.png'
-st.sidebar.image(logo)
+# Ensure coordinates are float
+df[lat_col] = pd.to_numeric(df[lat_col], errors='coerce')
+df[lon_col] = pd.to_numeric(df[lon_col], errors='coerce')
 
-m = leafmap.Map(center=[54, 15], zoom=4)
-#cities = pd.read_csv('data/230710_GeoDatenbank_Lage.csv', sep=';')
-        #regions = "https://raw.githubusercontent.com/giswqs/leafmap/master/examples/data/us_regions.geojson"
+# Drop rows with missing coordinates
+df = df.dropna(subset=[lat_col, lon_col])
 
-        #m.add_geojson(regions, layer_name="US Regions")
-m.add_points_from_xy(filtered_df, x="Laenge", y="Breite")
-        #m.add_points_from_xy(
-           # cities,
-           # x="lat",
-           # y="lon",
-           # color_column="Projektnummer",
-           # icon_names=["gear", "map", "leaf", "globe"],
-           # spin=True,
-           # add_legend=True,)
+st.write("This is a kepler.gl map with data input in streamlit")
 
-m.to_streamlit(height=700)
+# Toggle fullscreen button
+if st.button("Toggle Fullscreen Map"):
+    current_height = st.session_state.get('map_height', 800)
+    st.session_state['map_height'] = 1200 if current_height == 800 else 800
+    st.rerun()
+
+map_height = st.session_state.get('map_height', 1200)
+map_1 = KeplerGl(height=map_height)
+map_1.add_data(
+    data=df, name="Status"
+)  # Alternative: KeplerGl(height=400, data={"name": df})
+
+keplergl_static(map_1, center_map=True, width=1200)

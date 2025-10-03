@@ -1,43 +1,27 @@
 import streamlit as st
-import leafmap.foliumap as leafmap
-import pandas as pd
 
-st.title("Bohrlöcher")
-df = pd.read_csv('data/230710_GeoDatenbank_Lage.csv', sep=';')
-df['lat'] = df['lat'].str.replace(',', '.').astype(float)
-df['lon'] = df['lon'].str.replace(',', '.').astype(float)
+st.title("GIS Overview")
 
-projekt_options = ["All"] + list(df['Projektname'].unique())
-selected_projekt = st.selectbox("Select Projektname", projekt_options)
+# List of pages
+pages = [
+    {"file": "pages/1_🌍_Bohrloecher.py", "title": "Bohrloecher", "icon": "🌍"},
+    {"file": "pages/2_🪟_Projectmap.py", "title": "Projectmap", "icon": "🪟"},
+    {"file": "pages/3_😄_Projectdataframe.py", "title": "Projectdataframe", "icon": "😄"},
+    {"file": "pages/4_Messtation.py", "title": "Messtation", "icon": "📊"},
+    {"file": "pages/5_convert.py", "title": "Convert", "icon": "🔄"},
+]
 
-if selected_projekt == "All":
-    filtered_df = df
-else:
-    filtered_df = df[df['Projektname'] == selected_projekt]
+# Create columns for grid
+cols = st.columns(3)
 
-
-st.set_page_config(layout="wide")
-
-
-st.sidebar.title("About")
-
-logo = r'C:\Users\a.geiger\Documents\GitHub\streamlit_gis\gis.png'
-st.sidebar.image(logo)
-
-m = leafmap.Map(center=[54, 15], zoom=4)
-#cities = pd.read_csv('data/230710_GeoDatenbank_Lage.csv', sep=';')
-        #regions = "https://raw.githubusercontent.com/giswqs/leafmap/master/examples/data/us_regions.geojson"
-
-        #m.add_geojson(regions, layer_name="US Regions")
-m.add_points_from_xy(filtered_df, x="lon", y="lat")
-        #m.add_points_from_xy(
-           # cities,
-           # x="lat",
-           # y="lon",
-           # color_column="Projektnummer",
-           # icon_names=["gear", "map", "leaf", "globe"],
-           # spin=True,
-           # add_legend=True,)
-
-m.to_streamlit(height=700)
-
+for i, page in enumerate(pages):
+    with cols[i % 3]:
+        # Create a card-like container
+        st.markdown(f"""
+        <div style="border: 1px solid #ddd; border-radius: 10px; padding: 20px; text-align: center; background-color: #f9f9f9; margin-bottom: 10px;">
+            <div style="font-size: 50px; margin-bottom: 10px;">{page["icon"]}</div>
+            <h3>{page["title"]}</h3>
+        </div>
+        """, unsafe_allow_html=True)
+        if st.button("Go to " + page["title"], key=page["file"]):
+            st.switch_page(page["file"])
