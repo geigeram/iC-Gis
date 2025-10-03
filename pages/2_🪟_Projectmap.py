@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import keplergl
 from keplergl import KeplerGl
 import streamlit.components.v1 as components
 
