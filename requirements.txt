@@ -4,3 +4,4 @@ geopy
 openpyxl
 requests
 streamlit-kepler-component
+geopandas
