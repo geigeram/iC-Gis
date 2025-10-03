@@ -1,8 +1,7 @@
 import streamlit as st
 import pandas as pd
-import streamlit_keplergl
-from streamlit_keplergl import keplergl_static
 from keplergl import KeplerGl
+import streamlit.components.v1 as components
 
 st.set_page_config(layout="wide")
 st.title("Project Map")
@@ -39,4 +38,4 @@ map_1.add_data(
     data=df, name="Status"
 )  # Alternative: KeplerGl(height=400, data={"name": df})
 
-keplergl_static(map_1, center_map=True)
+components.html(map_1._repr_html_(), height=map_height)
