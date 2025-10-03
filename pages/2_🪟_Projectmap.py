@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import pydeck as pdk
 from streamlit_keplergl import keplergl_static
 from keplergl import KeplerGl
 
@@ -39,4 +38,4 @@ map_1.add_data(
     data=df, name="Status"
 )  # Alternative: KeplerGl(height=400, data={"name": df})
 
-keplergl_static(map_1, center_map=True, width=1200)
+keplergl_static(map_1, center_map=True)

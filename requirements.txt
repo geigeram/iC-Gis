@@ -2,6 +2,4 @@ streamlit
 pandas
 geopy
 openpyxl
-pydeck
 requests
-st-excel-table
