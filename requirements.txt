@@ -3,3 +3,4 @@ pandas
 geopy
 openpyxl
 requests
+streamlit_keplerg
