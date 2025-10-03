@@ -3,5 +3,4 @@ pandas
 geopy
 openpyxl
 requests
-keplergl
-streamlit_keplerg
+streamlit-kepler-component
