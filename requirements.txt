@@ -3,5 +3,7 @@ pandas
 geopy
 openpyxl
 requests
+keplergl==0.3.2
+streamlit-keplergl==0.3.0
 streamlit-kepler-component
 geopandas
